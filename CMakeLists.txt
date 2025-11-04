@@ -17,7 +17,7 @@ find_package(ZLIB REQUIRED)
 
 # Common sources
 set(CNPY_SOURCES cnpy.cpp)
-set(CNPY_PUBLIC_HEADERS cnpy.h)
+set(CNPY_PUBLIC_HEADERS cnpy.h numpy_defs.h)
 
 # Helper function for shared/static libraries
 function(cnpy_common_setup tgt)
