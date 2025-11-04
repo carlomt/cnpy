@@ -83,7 +83,10 @@ std::tuple<size_t, std::vector<size_t>, bool> parse_npy_header(std::istream& fil
 std::tuple<uint16_t, size_t, size_t> parse_zip_footer(std::fstream& file);
 npz_t npz_load(const std::filesystem::path& fname);
 NpyArray npy_load(const std::filesystem::path& fname);
-
+// String-based overloads (compatibility)
+npz_t    npz_load(const std::string& fname);
+NpyArray npy_load(const std::string& fname);
+  
 template <typename T>
 std::vector<char>& operator+=(std::vector<char>& lhs, const T rhs)
 {

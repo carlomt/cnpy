@@ -312,6 +312,10 @@ cnpy::npz_t cnpy::npz_load(const std::filesystem::path& fname)
     return arrays;
 }
 
+cnpy::npz_t npz_load(const std::string& fname) {
+  return npz_load(std::filesystem::path(fname));
+}
+
 cnpy::NpyArray cnpy::npy_load(const std::filesystem::path& fname)
 {
     if (!std::filesystem::exists(fname))
@@ -322,4 +326,8 @@ cnpy::NpyArray cnpy::npy_load(const std::filesystem::path& fname)
         throw std::runtime_error("Cannot open file for reading");
 
     return load_the_npy_file(is);
+}
+
+cnpy::NpyArray npy_load(const std::string& fname) {
+  return npy_load(std::filesystem::path(fname));
 }
