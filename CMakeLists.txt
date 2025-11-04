@@ -9,9 +9,9 @@ option(CNPY_BUILD_SHARED "Build shared library" ON)
 option(CNPY_BUILD_STATIC "Build static library" ON)
 option(CNPY_BUILD_EXAMPLES "Build example programs" OFF)
 
-# Require C++11 features instead of forcing global compiler flags
+# Require C++17 features instead of forcing global compiler flags
 add_library(cnpy_compile_features INTERFACE)
-target_compile_features(cnpy_compile_features INTERFACE cxx_std_11)
+target_compile_features(cnpy_compile_features INTERFACE cxx_std_17)
 
 find_package(ZLIB REQUIRED)
 
