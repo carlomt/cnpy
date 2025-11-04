@@ -148,8 +148,7 @@ std::vector<char> create_npy_header(const std::vector<size_t>& shape)
 }
 
 template <typename T>
-void npy_save(const std::filesystem::path& fname, const T* data, const std::vector<size_t>& shape,
-              const std::string& mode = "w")
+void npy_save(const std::filesystem::path& fname, const T* data, const std::vector<size_t>& shape,const std::string& mode = "w")
 {
     std::fstream file;
     std::vector<size_t> true_data_shape;
@@ -206,9 +205,14 @@ void npy_save(const std::filesystem::path& fname, const T* data, const std::vect
     file.close();
 }
 
+template <typename T>  
+void npy_save(const std::string& fname, const T* data, const std::vector<size_t>& shape,const std::string& mode = "w")
+{
+  return npy_save(std::filesystem::path(fname), data, shape, mode);
+}
+  
 template <typename T>
-void npz_save(const std::filesystem::path& zipname, std::string key, const T* data, const std::vector<size_t>& shape,
-              const std::string& mode = "w")
+void npz_save(const std::filesystem::path& zipname, std::string key, const T* data, const std::vector<size_t>& shape, const std::string& mode = "w")              
 {
     // first, append a .npy to the key (it is a file in a zip)
     key += ".npy";
@@ -305,6 +309,13 @@ void npz_save(const std::filesystem::path& zipname, std::string key, const T* da
     ios.close();
 }
 
+template <typename T>
+void npz_save(const std::string& zipname, std::string key, const T* data, const std::vector<size_t>& shape, const std::string& mode = "w")
+{
+  return npz_save(std::filesystem::path(zipname), key, data, shape, mode);
+}
+
+  
 }  // namespace cnpy
 
 #endif
