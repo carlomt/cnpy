@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12...3.27)
+cmake_minimum_required(VERSION 3.5...4.0)
 
 # Modern CMake, no need for legacy policies
 project(CNPY VERSION 0.2.0 LANGUAGES CXX)
